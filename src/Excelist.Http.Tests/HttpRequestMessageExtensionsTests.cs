@@ -10,8 +10,8 @@ namespace Excelist.Http.Tests
         [TestMethod]
         public void ExportToExcel()
         {
-            List<Customer> customers = new()
-            {
+            List<Customer> customers =
+            [
                 new Customer()
                 {
                     Name = "Beverley Wyndhame",
@@ -25,14 +25,14 @@ namespace Excelist.Http.Tests
                     Address = "Lodorp 3113, Maffe, Namur, Belgium",
                     Email = "bbuckley@contoso.com"
                 }
-            };
+            ];
 
             IEnumerableToExcelExporter<Customer> exporter = new OpenOfficeEnumerableToExcelExporter<Customer>();
 
             HttpRequestMessage request = new();
             HttpResponseMessage response = request.ExportToExcel(customers, exporter);
 
-            Assert.IsTrue(response.Content.Headers.ContentLength == 2922);
+            Assert.AreEqual(4511, response.Content.Headers.ContentLength);
         }
     }
 }

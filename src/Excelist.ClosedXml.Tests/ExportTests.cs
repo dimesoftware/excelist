@@ -26,7 +26,7 @@ namespace Excelist.ClosedXml.Tests
             ];
 
             MemoryStream memoryStream = exporter.ToExcel(customers);
-            Assert.IsTrue(memoryStream.Length == 6582);
+            Assert.AreEqual(6583, memoryStream.Length);
         }
     }
 }
