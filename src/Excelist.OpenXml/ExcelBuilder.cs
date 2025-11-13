@@ -18,7 +18,7 @@ namespace System.Collections.Generic
             _collection = collection;
             _settings = settings;
 
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            ExcelPackage.License.SetNonCommercialPersonal("Hendrik Bulens");
 
             _package = new ExcelPackage();
             _worksheet = _package.Workbook.Worksheets.Add(_settings.SheetName);

@@ -4,7 +4,6 @@ using System.IO;
 
 namespace Excelist.OpenXml.Tests
 {
-
     [TestClass]
     public class OpenOfficeEnumerableToExcelExporterTests
     {
@@ -13,8 +12,8 @@ namespace Excelist.OpenXml.Tests
         {
             IEnumerableToExcelExporter<Customer> exporter = new OpenOfficeEnumerableToExcelExporter<Customer>();
 
-            List<Customer> customers = new()
-            {
+            List<Customer> customers =
+            [
                 new Customer()
                 {
                     Name = "Beverley Wyndhame",
@@ -28,10 +27,10 @@ namespace Excelist.OpenXml.Tests
                     Address = "Lodorp 3113, Maffe, Namur, Belgium",
                     Email = "bbuckley@contoso.com"
                 }
-            };
+            ];
 
             MemoryStream memoryStream = exporter.ToExcel(customers);
-            Assert.IsTrue(memoryStream.Length == 2922);
+            Assert.AreEqual(4511, memoryStream.Length);
         }
 
         [TestMethod]
@@ -45,8 +44,8 @@ namespace Excelist.OpenXml.Tests
                     SheetName = "Customers"
                 });
 
-            List<Customer> customers = new()
-            {
+            List<Customer> customers =
+            [
                 new Customer()
                 {
                     Name = "Beverley Wyndhame",
@@ -60,10 +59,10 @@ namespace Excelist.OpenXml.Tests
                     Address = "Lodorp 3113, Maffe, Namur, Belgium",
                     Email = "bbuckley@contoso.com"
                 }
-            };
+            ];
 
             MemoryStream memoryStream = exporter.ToExcel(customers);
-            Assert.IsTrue(memoryStream.Length == 2933);
+            Assert.AreEqual(4523, memoryStream.Length);
         }
     }
 }
